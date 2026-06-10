@@ -801,11 +801,7 @@
         ];
 
         const homeVideos = [
-            "https://timflach.com/wp-content/uploads/2014/02/SELECT_03.webmhd.webm",
-            "https://timflach.com/wp-content/uploads/2014/02/SELECT_012.webmhd2.webm",
-            "https://timflach.com/wp-content/uploads/2014/02/SELECT_02.webmhd.webm",
-            "https://timflach.com/wp-content/uploads/2014/02/SELECT_04_cut.webmhd.webm",
-            "https://timflach.com/wp-content/uploads/2014/02/SELECT_051.webmhd1.webm"
+            "assets/videos/home-video.mov?v=3"
         ];
 
         // Routing & Rendering
@@ -844,18 +840,18 @@
             app.innerHTML = `
                 <div class="home-page">
                     <div class="home-video-container">
-                        <video id="home-video" autoplay muted playsinline poster="assets/editorial/editorial-001.webp?v=3">
-                            <source src="${homeVideos[0]}" type="video/webm">
+                        <video id="home-video" autoplay muted playsinline loop poster="assets/editorial/editorial-001.webp?v=3" src="${homeVideos[0]}">
                         </video>
                     </div>
                     <h1 class="home-title">camara visual</h1>
                 </div>
             `;
             
-            // Setup Video Loop
+            // Setup Video Loop (fallback for multiple videos if needed)
             const videoEl = document.getElementById('home-video');
-            if (videoEl) {
+            if (videoEl && homeVideos.length > 1) {
                 let currentVideoIdx = 0;
+                videoEl.removeAttribute('loop');
                 videoEl.addEventListener('ended', () => {
                     currentVideoIdx = (currentVideoIdx + 1) % homeVideos.length;
                     videoEl.src = homeVideos[currentVideoIdx];
