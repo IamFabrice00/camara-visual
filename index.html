@@ -816,7 +816,7 @@
             app.innerHTML = `
                 <div class="home-page">
                     <div class="home-video-container">
-                        <video id="home-video" autoplay muted playsinline poster="assets/editorial/editorial-001.jpg">
+                        <video id="home-video" autoplay muted playsinline poster="assets/editorial/editorial-001.jpg?v=2">
                             <source src="${homeVideos[0]}" type="video/webm">
                         </video>
                     </div>
@@ -858,7 +858,7 @@
                 const title = path.split('/').pop().split('.')[0].replace('-', ' ');
                 return `
                     <div class="gallery-item" onclick="openLightbox('${category}', ${index})">
-                        <img src="${path}" alt="${title}" loading="lazy">
+                        <img src="${path}?v=2" alt="${title}" loading="lazy">
                         <div class="gallery-caption">
                             <span class="number">${index + 1}</span>
                             <span class="title">${title}</span>
@@ -1063,7 +1063,7 @@
             const path = currentGallery[currentImageIndex];
             const title = path.split('/').pop().split('.')[0].replace('-', ' ');
             
-            img.src = path;
+            img.src = path + '?v=2';
             caption.textContent = `${currentImageIndex + 1} / ${currentGallery.length} — ${title}`;
         }
 
