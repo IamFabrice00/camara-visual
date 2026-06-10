@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="assets/logos/logo-001.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>camara visual</title>
@@ -668,46 +669,96 @@
 
     <script>
         // Data Structure
-        const worksData = {
+                const worksData = {
             portraits: {
                 title: "Portraits",
                 statement: "Capturing the essence and personality of the subject through compelling portrait photography.",
-                images: Array.from({length: 24}, (_, i) => `Portrait ${i+1}`)
+                images: [
+                    "assets/portraits/portrait-001.jpg",
+                    "assets/portraits/portrait-002.jpg",
+                    "assets/portraits/portrait-003.jpg",
+                    "assets/portraits/portrait-004.jpg"
+                ]
             },
             editorial: {
                 title: "Editorial",
                 statement: "Visual storytelling tailored for publications, blending fashion, lifestyle, and narrative elements.",
-                images: Array.from({length: 18}, (_, i) => `Editorial Shot ${i+1}`)
+                images: [
+                    "assets/editorial/editorial-001.jpg",
+                    "assets/editorial/editorial-002.jpg",
+                    "assets/editorial/editorial-003.jpg",
+                    "assets/editorial/editorial-004.jpg",
+                    "assets/editorial/editorial-005.jpg",
+                    "assets/editorial/editorial-006.jpg",
+                    "assets/editorial/editorial-007.jpg"
+                ]
             },
             'beauty-retouch': {
                 title: "Beauty Retouch",
                 statement: "High-end beauty photography emphasizing flawless skin, makeup artistry, and meticulous post-production.",
-                images: Array.from({length: 15}, (_, i) => `Beauty Shot ${i+1}`)
+                images: [
+                    "assets/beauty-retouch/beauty-retouch-001.jpg",
+                    "assets/beauty-retouch/beauty-retouch-002.jpg"
+                ]
             },
             ecommerce: {
                 title: "Ecommerce",
                 statement: "Clean, consistent, and high-quality product photography designed to elevate online retail experiences.",
-                images: Array.from({length: 30}, (_, i) => `Product Shot ${i+1}`)
+                images: [
+                    "assets/ecommerce/ecommerce-001.jpg",
+                    "assets/ecommerce/ecommerce-002.jpg",
+                    "assets/ecommerce/ecommerce-003.png",
+                    "assets/ecommerce/ecommerce-004.png",
+                    "assets/ecommerce/ecommerce-005.png",
+                    "assets/ecommerce/ecommerce-006.png",
+                    "assets/ecommerce/ecommerce-007.jpg"
+                ]
             },
             events: {
                 title: "Events (Weddings & Birthdays)",
                 statement: "Documenting life's most precious moments with candid and elegant event coverage.",
-                images: Array.from({length: 40}, (_, i) => `Event Highlight ${i+1}`)
+                images: [
+                    "assets/events/event-001.png",
+                    "assets/events/event-002.jpg",
+                    "assets/events/event-003.jpg",
+                    "assets/events/event-004.jpg",
+                    "assets/events/event-005.jpg"
+                ]
             },
             'natural-light': {
                 title: "Natural Light",
                 statement: "Harnessing the beauty of available light to create authentic, soft, and cinematic visuals.",
-                images: Array.from({length: 20}, (_, i) => `Natural Light Scene ${i+1}`)
+                images: [
+                    "assets/natural-light/natural-light-001.jpg",
+                    "assets/natural-light/natural-light-002.jpg",
+                    "assets/natural-light/natural-light-003.jpg",
+                    "assets/natural-light/natural-light-004.jpg",
+                    "assets/natural-light/natural-light-005.jpg"
+                ]
             },
             'black-white': {
                 title: "Black & white",
                 statement: "Focusing on contrast, texture, and emotion through the timeless medium of black and white photography.",
-                images: Array.from({length: 22}, (_, i) => `Monochrome Shot ${i+1}`)
+                images: [
+                    "assets/black-white/black-white-001.jpg",
+                    "assets/black-white/black-white-002.jpg",
+                    "assets/black-white/black-white-003.png",
+                    "assets/black-white/black-white-004.jpg",
+                    "assets/black-white/black-white-005.jpg",
+                    "assets/black-white/black-white-006.jpg"
+                ]
             },
             'corporate-headshots': {
                 title: "Corporate Headshots",
                 statement: "Professional, polished, and approachable headshots for modern business communication.",
-                images: Array.from({length: 16}, (_, i) => `Professional Headshot ${i+1}`)
+                images: [
+                    "assets/corporate-headshots/corporate-headshot-001.png",
+                    "assets/corporate-headshots/corporate-headshot-002.png",
+                    "assets/corporate-headshots/corporate-headshot-003.png",
+                    "assets/corporate-headshots/corporate-headshot-004.png",
+                    "assets/corporate-headshots/corporate-headshot-005.png",
+                    "assets/corporate-headshots/corporate-headshot-006.png"
+                ]
             }
         };
 
@@ -765,7 +816,7 @@
             app.innerHTML = `
                 <div class="home-page">
                     <div class="home-video-container">
-                        <video id="home-video" autoplay muted playsinline poster="https://picsum.photos/seed/homeposter/1920/1080?grayscale">
+                        <video id="home-video" autoplay muted playsinline poster="assets/editorial/editorial-001.jpg">
                             <source src="${homeVideos[0]}" type="video/webm">
                         </video>
                     </div>
@@ -803,11 +854,11 @@
                 return;
             }
             
-            let galleryHTML = work.images.map((title, index) => {
-                const dims = getMasonryDimensions(index);
+            let galleryHTML = work.images.map((path, index) => {
+                const title = path.split('/').pop().split('.')[0].replace('-', ' ');
                 return `
                     <div class="gallery-item" onclick="openLightbox('${category}', ${index})">
-                        <img src="https://picsum.photos/seed/${category}-${index}/${dims}?grayscale" alt="${title}" loading="lazy">
+                        <img src="${path}" alt="${title}" loading="lazy">
                         <div class="gallery-caption">
                             <span class="number">${index + 1}</span>
                             <span class="title">${title}</span>
@@ -1009,11 +1060,11 @@
             const img = document.getElementById('lightbox-img');
             const caption = document.getElementById('lightbox-caption');
             
-            // To maintain aspect ratio but allow high-res viewing
-            const dims = getMasonryDimensions(currentImageIndex);
+            const path = currentGallery[currentImageIndex];
+            const title = path.split('/').pop().split('.')[0].replace('-', ' ');
             
-            img.src = `https://picsum.photos/seed/${currentCategory}-${currentImageIndex}/${dims}?grayscale`;
-            caption.textContent = `${currentImageIndex + 1} / ${currentGallery.length} — ${currentGallery[currentImageIndex]}`;
+            img.src = path;
+            caption.textContent = `${currentImageIndex + 1} / ${currentGallery.length} — ${title}`;
         }
 
         // Keyboard navigation for Lightbox

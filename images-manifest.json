@@ -1,0 +1,432 @@
+[
+  {
+    "image": "assets/logos/logo-001.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Screenshot-2025-10-24-at-03.18.28.png",
+    "uploaded_url": "assets/logos/logo-001.png",
+    "resolution": "998x482",
+    "format": "PNG",
+    "file_size": 94217,
+    "status": "success",
+    "category": "logos"
+  },
+  {
+    "image": "assets/portraits/portrait-001.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/portraits/portrait-001.jpg",
+    "resolution": "672x1024",
+    "format": "JPEG",
+    "file_size": 90976,
+    "status": "success",
+    "category": "portraits"
+  },
+  {
+    "image": "assets/portraits/portrait-002.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/portraits/portrait-002.jpg",
+    "resolution": "1024x786",
+    "format": "JPEG",
+    "file_size": 171002,
+    "status": "success",
+    "category": "portraits"
+  },
+  {
+    "image": "assets/portraits/portrait-003.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/portraits/portrait-003.jpg",
+    "resolution": "712x1024",
+    "format": "JPEG",
+    "file_size": 157784,
+    "status": "success",
+    "category": "portraits"
+  },
+  {
+    "image": "assets/portraits/portrait-004.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/portraits/portrait-004.jpg",
+    "resolution": "682x1024",
+    "format": "JPEG",
+    "file_size": 108739,
+    "status": "success",
+    "category": "portraits"
+  },
+  {
+    "image": "assets/editorial/editorial-001.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/145A0393.jpg",
+    "uploaded_url": "assets/editorial/editorial-001.jpg",
+    "resolution": "6720x4480",
+    "format": "JPEG",
+    "file_size": 4038542,
+    "status": "success",
+    "category": "editorial"
+  },
+  {
+    "image": "assets/editorial/editorial-002.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/145A4884-2.jpg",
+    "uploaded_url": "assets/editorial/editorial-002.jpg",
+    "resolution": "6720x4480",
+    "format": "MPO",
+    "file_size": 7770233,
+    "status": "success",
+    "category": "editorial"
+  },
+  {
+    "image": "assets/editorial/editorial-003.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/17537C99-940C-499B-813E-41C6762434FF.jpg",
+    "uploaded_url": "assets/editorial/editorial-003.jpg",
+    "resolution": "1440x1800",
+    "format": "JPEG",
+    "file_size": 293384,
+    "status": "success",
+    "category": "editorial"
+  },
+  {
+    "image": "assets/editorial/editorial-004.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Facetune_25-10-2025-05-10-59.jpg",
+    "uploaded_url": "assets/editorial/editorial-004.jpg",
+    "resolution": "4095x6143",
+    "format": "JPEG",
+    "file_size": 3193269,
+    "status": "success",
+    "category": "editorial"
+  },
+  {
+    "image": "assets/editorial/editorial-005.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_3283.jpg",
+    "uploaded_url": "assets/editorial/editorial-005.jpg",
+    "resolution": "1170x1718",
+    "format": "JPEG",
+    "file_size": 742874,
+    "status": "success",
+    "category": "editorial"
+  },
+  {
+    "image": "assets/editorial/editorial-006.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_3286.jpg",
+    "uploaded_url": "assets/editorial/editorial-006.jpg",
+    "resolution": "1170x1718",
+    "format": "JPEG",
+    "file_size": 684779,
+    "status": "success",
+    "category": "editorial"
+  },
+  {
+    "image": "assets/editorial/editorial-007.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/edit145A9319-2-2.jpg",
+    "uploaded_url": "assets/editorial/editorial-007.jpg",
+    "resolution": "4480x6720",
+    "format": "JPEG",
+    "file_size": 7093766,
+    "status": "success",
+    "category": "editorial"
+  },
+  {
+    "image": "assets/beauty-retouch/beauty-retouch-001.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/145A0161-2-1.jpg",
+    "uploaded_url": "assets/beauty-retouch/beauty-retouch-001.jpg",
+    "resolution": "4043x5568",
+    "format": "JPEG",
+    "file_size": 5609373,
+    "status": "success",
+    "category": "beauty-retouch"
+  },
+  {
+    "image": "assets/beauty-retouch/beauty-retouch-002.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_3771-3-3.jpg",
+    "uploaded_url": "assets/beauty-retouch/beauty-retouch-002.jpg",
+    "resolution": "4372x5465",
+    "format": "JPEG",
+    "file_size": 12414781,
+    "status": "success",
+    "category": "beauty-retouch"
+  },
+  {
+    "image": "assets/ecommerce/ecommerce-001.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_1554.jpg",
+    "uploaded_url": "assets/ecommerce/ecommerce-001.jpg",
+    "resolution": "1668x2263",
+    "format": "JPEG",
+    "file_size": 3398181,
+    "status": "success",
+    "category": "ecommerce"
+  },
+  {
+    "image": "assets/ecommerce/ecommerce-002.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_1557.jpg",
+    "uploaded_url": "assets/ecommerce/ecommerce-002.jpg",
+    "resolution": "1668x2300",
+    "format": "JPEG",
+    "file_size": 2994587,
+    "status": "success",
+    "category": "ecommerce"
+  },
+  {
+    "image": "assets/ecommerce/ecommerce-003.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_1822.png",
+    "uploaded_url": "assets/ecommerce/ecommerce-003.png",
+    "resolution": "1668x2388",
+    "format": "PNG",
+    "file_size": 8629898,
+    "status": "success",
+    "category": "ecommerce"
+  },
+  {
+    "image": "assets/ecommerce/ecommerce-004.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_1967-3.png",
+    "uploaded_url": "assets/ecommerce/ecommerce-004.png",
+    "resolution": "1668x2388",
+    "format": "PNG",
+    "file_size": 8256291,
+    "status": "success",
+    "category": "ecommerce"
+  },
+  {
+    "image": "assets/ecommerce/ecommerce-005.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_1999-2.png",
+    "uploaded_url": "assets/ecommerce/ecommerce-005.png",
+    "resolution": "1668x2388",
+    "format": "PNG",
+    "file_size": 8971704,
+    "status": "success",
+    "category": "ecommerce"
+  },
+  {
+    "image": "assets/ecommerce/ecommerce-006.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_2097-3.png",
+    "uploaded_url": "assets/ecommerce/ecommerce-006.png",
+    "resolution": "1668x2388",
+    "format": "PNG",
+    "file_size": 7612926,
+    "status": "success",
+    "category": "ecommerce"
+  },
+  {
+    "image": "assets/ecommerce/ecommerce-007.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_2109-2.jpg",
+    "uploaded_url": "assets/ecommerce/ecommerce-007.jpg",
+    "resolution": "1668x1903",
+    "format": "JPEG",
+    "file_size": 2873814,
+    "status": "success",
+    "category": "ecommerce"
+  },
+  {
+    "image": "assets/events/event-001.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/2Edited_145A6088-1.png",
+    "uploaded_url": "assets/events/event-001.png",
+    "resolution": "4480x6720",
+    "format": "PNG",
+    "file_size": 46156521,
+    "status": "success",
+    "category": "events"
+  },
+  {
+    "image": "assets/events/event-002.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_0024-7.jpg",
+    "uploaded_url": "assets/events/event-002.jpg",
+    "resolution": "1170x1677",
+    "format": "JPEG",
+    "file_size": 468063,
+    "status": "success",
+    "category": "events"
+  },
+  {
+    "image": "assets/events/event-003.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_0026.jpg",
+    "uploaded_url": "assets/events/event-003.jpg",
+    "resolution": "4095x6143",
+    "format": "JPEG",
+    "file_size": 5863783,
+    "status": "success",
+    "category": "events"
+  },
+  {
+    "image": "assets/events/event-004.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_6244.jpg",
+    "uploaded_url": "assets/events/event-004.jpg",
+    "resolution": "1170x1606",
+    "format": "JPEG",
+    "file_size": 336776,
+    "status": "success",
+    "category": "events"
+  },
+  {
+    "image": "assets/events/event-005.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_9998.jpg",
+    "uploaded_url": "assets/events/event-005.jpg",
+    "resolution": "4480x6720",
+    "format": "JPEG",
+    "file_size": 15700952,
+    "status": "success",
+    "category": "events"
+  },
+  {
+    "image": "assets/natural-light/natural-light-001.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/natural-light/natural-light-001.jpg",
+    "resolution": "682x1024",
+    "format": "JPEG",
+    "file_size": 127018,
+    "status": "success",
+    "category": "natural-light"
+  },
+  {
+    "image": "assets/natural-light/natural-light-002.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/natural-light/natural-light-002.jpg",
+    "resolution": "646x1024",
+    "format": "JPEG",
+    "file_size": 158985,
+    "status": "success",
+    "category": "natural-light"
+  },
+  {
+    "image": "assets/natural-light/natural-light-003.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/natural-light/natural-light-003.jpg",
+    "resolution": "682x1024",
+    "format": "JPEG",
+    "file_size": 190787,
+    "status": "success",
+    "category": "natural-light"
+  },
+  {
+    "image": "assets/natural-light/natural-light-004.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/natural-light/natural-light-004.jpg",
+    "resolution": "682x1024",
+    "format": "JPEG",
+    "file_size": 133656,
+    "status": "success",
+    "category": "natural-light"
+  },
+  {
+    "image": "assets/natural-light/natural-light-005.jpg",
+    "source_url": "Uploaded by user",
+    "uploaded_url": "assets/natural-light/natural-light-005.jpg",
+    "resolution": "682x1024",
+    "format": "JPEG",
+    "file_size": 180398,
+    "status": "success",
+    "category": "natural-light"
+  },
+  {
+    "image": "assets/black-white/black-white-001.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/145A1197-1.jpg",
+    "uploaded_url": "assets/black-white/black-white-001.jpg",
+    "resolution": "1730x2048",
+    "format": "JPEG",
+    "file_size": 2444236,
+    "status": "success",
+    "category": "black-white"
+  },
+  {
+    "image": "assets/black-white/black-white-002.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/145A9407.jpg",
+    "uploaded_url": "assets/black-white/black-white-002.jpg",
+    "resolution": "4480x6720",
+    "format": "JPEG",
+    "file_size": 8226020,
+    "status": "success",
+    "category": "black-white"
+  },
+  {
+    "image": "assets/black-white/black-white-003.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/145A9567-1.png",
+    "uploaded_url": "assets/black-white/black-white-003.png",
+    "resolution": "3450x5174",
+    "format": "PNG",
+    "file_size": 17497936,
+    "status": "success",
+    "category": "black-white"
+  },
+  {
+    "image": "assets/black-white/black-white-004.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Facetune_25-10-2025-02-35-08.jpg",
+    "uploaded_url": "assets/black-white/black-white-004.jpg",
+    "resolution": "2300x4003",
+    "format": "JPEG",
+    "file_size": 2938463,
+    "status": "success",
+    "category": "black-white"
+  },
+  {
+    "image": "assets/black-white/black-white-005.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Facetune_25-10-2025-02-43-57.jpg",
+    "uploaded_url": "assets/black-white/black-white-005.jpg",
+    "resolution": "1120x1404",
+    "format": "JPEG",
+    "file_size": 379027,
+    "status": "success",
+    "category": "black-white"
+  },
+  {
+    "image": "assets/black-white/black-white-006.jpg",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/IMG_3204.jpg",
+    "uploaded_url": "assets/black-white/black-white-006.jpg",
+    "resolution": "2255x3077",
+    "format": "JPEG",
+    "file_size": 2274175,
+    "status": "success",
+    "category": "black-white"
+  },
+  {
+    "image": "assets/corporate-headshots/corporate-headshot-001.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/2Michela_145A5702-2.png",
+    "uploaded_url": "assets/corporate-headshots/corporate-headshot-001.png",
+    "resolution": "2833x3256",
+    "format": "PNG",
+    "file_size": 13082384,
+    "status": "success",
+    "category": "corporate-headshots"
+  },
+  {
+    "image": "assets/corporate-headshots/corporate-headshot-002.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Edit145A5532.png",
+    "uploaded_url": "assets/corporate-headshots/corporate-headshot-002.png",
+    "resolution": "4480x6545",
+    "format": "PNG",
+    "file_size": 30722395,
+    "status": "success",
+    "category": "corporate-headshots"
+  },
+  {
+    "image": "assets/corporate-headshots/corporate-headshot-003.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Edit145A5569.png",
+    "uploaded_url": "assets/corporate-headshots/corporate-headshot-003.png",
+    "resolution": "4480x6720",
+    "format": "PNG",
+    "file_size": 38891512,
+    "status": "success",
+    "category": "corporate-headshots"
+  },
+  {
+    "image": "assets/corporate-headshots/corporate-headshot-004.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Edit145A5664-2.png",
+    "uploaded_url": "assets/corporate-headshots/corporate-headshot-004.png",
+    "resolution": "4480x6720",
+    "format": "PNG",
+    "file_size": 33226425,
+    "status": "success",
+    "category": "corporate-headshots"
+  },
+  {
+    "image": "assets/corporate-headshots/corporate-headshot-005.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Edited145A5510-Edit.png",
+    "uploaded_url": "assets/corporate-headshots/corporate-headshot-005.png",
+    "resolution": "4480x6720",
+    "format": "PNG",
+    "file_size": 33860151,
+    "status": "success",
+    "category": "corporate-headshots"
+  },
+  {
+    "image": "assets/corporate-headshots/corporate-headshot-006.png",
+    "source_url": "https://camaravisual.com/wp-content/uploads/2025/10/Edited145A5755.png",
+    "uploaded_url": "assets/corporate-headshots/corporate-headshot-006.png",
+    "resolution": "4480x6720",
+    "format": "PNG",
+    "file_size": 29551396,
+    "status": "success",
+    "category": "corporate-headshots"
+  }
+]
