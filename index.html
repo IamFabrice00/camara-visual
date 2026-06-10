@@ -66,7 +66,8 @@
             width: 100%;
             padding: 25px 40px;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
+            align-items: center;
             font-family: var(--font-sans);
             font-size: 13px;
             text-transform: uppercase;
@@ -83,6 +84,30 @@
         .nav-inner {
             display: flex;
             gap: 50px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 35px;
+            z-index: 102;
+        }
+
+        .nav-logo a {
+            display: block;
+            height: 100%;
+        }
+
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            display: block;
+            transition: filter 0.3s ease;
+        }
+
+        body.theme-light .nav-logo img {
+            filter: invert(1);
         }
 
         .nav-item {
@@ -551,6 +576,12 @@
             nav {
                 padding: 20px;
             }
+            .nav-logo {
+                height: 25px;
+            }
+            body.theme-light .nav-inner.active ~ .nav-logo img {
+                filter: none;
+            }
             .nav-inner {
                 display: none;
                 flex-direction: column;
@@ -645,6 +676,11 @@
                 </ul>
             </li>
         </ul>
+        <div class="nav-logo">
+            <a href="#home">
+                <img src="assets/logos/logo-001.png" alt="Camara Visual Logo">
+            </a>
+        </div>
     </nav>
 
     <div id="app"></div>
