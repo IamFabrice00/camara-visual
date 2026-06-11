@@ -513,7 +513,7 @@
             margin-top: 40px;
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 12px 0;
             border: none;
@@ -524,6 +524,16 @@
             font-size: 14px;
             outline: none;
             transition: border-color 0.2s;
+        }
+
+        .form-group select option {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        body:not(.theme-light) .form-group select option {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
         }
         
         .form-group input:focus, .form-group textarea:focus {
@@ -963,22 +973,56 @@
                         </div>
                         
                         <div style="margin-top: 60px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 40px;">
-                            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 15px; margin-bottom: 20px; font-family: var(--font-sans); text-align: center; color: var(--text-dark);">Request a Session</h3>
-                            <p style="margin-bottom: 30px; text-align: center; color: #666; font-style: italic; font-size: 14px;">To book a session or inquire about availability, please provide your details below.</p>
-                            <form class="contact-form" onsubmit="event.preventDefault(); alert('Booking request sent!');">
+                            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 15px; margin-bottom: 20px; font-family: var(--font-sans); text-align: center; color: var(--text-dark);">Modulo di Prenotazione</h3>
+                            <form class="contact-form" onsubmit="event.preventDefault(); alert('Richiesta inviata con successo!');">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Full Name" required>
+                                    <input type="text" placeholder="Nome e Cognome" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" placeholder="Email Address" required>
+                                    <input type="email" placeholder="Indirizzo Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Session Type (e.g., Portrait, Event)" required>
+                                    <input type="tel" placeholder="Numero di Telefono" required>
                                 </div>
                                 <div class="form-group">
+                                    <select required style="color: var(--text-dark);">
+                                        <option value="" disabled selected>Come hai scoperto il mio lavoro?</option>
+                                        <option value="Instagram">Instagram</option>
+                                        <option value="Passaparola">Passaparola</option>
+                                        <option value="Google">Google</option>
+                                        <option value="Altro">Altro</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select required style="color: var(--text-dark);">
+                                        <option value="" disabled selected>Quale servizio fotografico desideri prenotare?</option>
+                                        <option value="Ritratti e Headshot">Ritratti e Headshot</option>
+                                        <option value="Matrimonio">Matrimonio</option>
+                                        <option value="Eventi">Eventi</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Quale pacchetto ti interessa?" required>
+                                </div>
+                                <div class="form-group">
+                                    <select required style="color: var(--text-dark);">
+                                        <option value="" disabled selected>Dove si svolgerà il servizio fotografico?</option>
+                                        <option value="Studio">Studio</option>
+                                        <option value="Outdoor">Outdoor</option>
+                                        <option value="Location per eventi">Location per eventi</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
+                                    <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); text-align: left;">Data del servizio fotografico/evento</label>
                                     <input type="date" required style="color: var(--text-dark);">
                                 </div>
-                                <button type="submit" class="submit-btn" style="margin-top: 10px;">Request Booking</button>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Indirizzo della location" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea placeholder="Cosa apprezzi maggiormente del mio stile fotografico?" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn" style="margin-top: 10px;">Invia richiesta</button>
                             </form>
                         </div>
                     </div>
