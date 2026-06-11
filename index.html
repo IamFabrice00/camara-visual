@@ -668,7 +668,6 @@
             <li class="nav-item">
                 <a>Bookings</a>
                 <ul class="dropdown">
-                    <li><a href="#bookings/booking">Booking</a></li>
                     <li><a href="#bookings/pricing">Pricing</a></li>
                     <li><a href="#bookings/faqs">FAQs</a></li>
                     <li><a href="#bookings/contact">Contact</a></li>
@@ -915,6 +914,12 @@
         function renderInfo(page) {
             document.body.classList.add('theme-light');
             
+            // Redirect booking to pricing since they are now unified
+            if (page === 'booking') {
+                window.location.hash = 'bookings/pricing';
+                return;
+            }
+            
             let content = '';
             let title = page.charAt(0).toUpperCase() + page.slice(1);
             
@@ -930,27 +935,6 @@
                         <p>Tim has been awarded an Honorary Doctorate from the University of the Arts London (Norwich) and an Honorary Fellowship by the Royal Photographic Society. He is also a Senior Research Fellow (Artist in Residence) at Centre for Eudaimonia and Human Flourishing at Linacre College, University of Oxford, and serves as President of the Association of Photographers.</p>
                         <br>
                         <p>He lives in London with his wife and son.</p>
-                    </div>
-                `;
-            } else if (page === 'booking') {
-                content = `
-                    <div class="info-content">
-                        <p style="margin-bottom: 30px;">To book a session or inquire about availability, please provide your details below.</p>
-                        <form class="contact-form" onsubmit="event.preventDefault(); alert('Booking request sent!');">
-                            <div class="form-group">
-                                <input type="text" placeholder="Full Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Email Address" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Session Type (e.g., Portrait, Event)" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="date" required style="color: var(--text-dark);">
-                            </div>
-                            <button type="submit" class="submit-btn">Request Booking</button>
-                        </form>
                     </div>
                 `;
             } else if (page === 'pricing') {
@@ -977,7 +961,26 @@
                             </div>
                             <div class="year" style="font-size: 16px; width: auto;">Custom Quote</div>
                         </div>
-                        <p style="margin-top: 40px; font-size: 14px; color: #666; font-style: italic; text-align: center;">For custom packages or specific requirements, please contact us.</p>
+                        
+                        <div style="margin-top: 60px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 40px;">
+                            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 15px; margin-bottom: 20px; font-family: var(--font-sans); text-align: center; color: var(--text-dark);">Request a Session</h3>
+                            <p style="margin-bottom: 30px; text-align: center; color: #666; font-style: italic; font-size: 14px;">To book a session or inquire about availability, please provide your details below.</p>
+                            <form class="contact-form" onsubmit="event.preventDefault(); alert('Booking request sent!');">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email Address" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Session Type (e.g., Portrait, Event)" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" required style="color: var(--text-dark);">
+                                </div>
+                                <button type="submit" class="submit-btn" style="margin-top: 10px;">Request Booking</button>
+                            </form>
+                        </div>
                     </div>
                 `;
             } else if (page === 'faqs') {
