@@ -513,7 +513,7 @@
             margin-top: 40px;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px 0;
             border: none;
@@ -525,18 +525,18 @@
             outline: none;
             transition: border-color 0.2s;
         }
-
+        
+        .form-group select {
+            cursor: pointer;
+            border-radius: 0;
+        }
+        
         .form-group select option {
             background-color: var(--bg-light);
             color: var(--text-dark);
         }
         
-        body:not(.theme-light) .form-group select option {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-        }
-        
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-bottom-color: var(--text-dark);
         }
         
@@ -973,56 +973,55 @@
                         </div>
                         
                         <div style="margin-top: 60px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 40px;">
-                            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 15px; margin-bottom: 20px; font-family: var(--font-sans); text-align: center; color: var(--text-dark);">Modulo di Prenotazione</h3>
-                            <form class="contact-form" onsubmit="event.preventDefault(); alert('Richiesta inviata con successo!');">
+                            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 15px; margin-bottom: 20px; font-family: var(--font-sans); text-align: center; color: var(--text-dark);">Request a Session</h3>
+                            <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry submitted successfully!');">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Nome e Cognome" required>
+                                    <input type="text" placeholder="Full Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" placeholder="Indirizzo Email" required>
+                                    <input type="email" placeholder="Email Address" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" placeholder="Numero di Telefono" required>
+                                    <input type="tel" placeholder="Phone Number" required>
                                 </div>
                                 <div class="form-group">
-                                    <select required style="color: var(--text-dark);">
-                                        <option value="" disabled selected>Come hai scoperto il mio lavoro?</option>
+                                    <select required style="color: #666;" onchange="this.style.color='var(--text-dark)'">
+                                        <option value="" disabled selected hidden>How did you hear about my work?</option>
                                         <option value="Instagram">Instagram</option>
-                                        <option value="Passaparola">Passaparola</option>
+                                        <option value="Word of Mouth">Word of Mouth</option>
                                         <option value="Google">Google</option>
-                                        <option value="Altro">Altro</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select required style="color: var(--text-dark);">
-                                        <option value="" disabled selected>Quale servizio fotografico desideri prenotare?</option>
-                                        <option value="Ritratti e Headshot">Ritratti e Headshot</option>
-                                        <option value="Matrimonio">Matrimonio</option>
-                                        <option value="Eventi">Eventi</option>
+                                    <select required style="color: #666;" onchange="this.style.color='var(--text-dark)'">
+                                        <option value="" disabled selected hidden>What type of photoshoot would you like to book?</option>
+                                        <option value="Portraits & Headshots">Portraits & Headshots</option>
+                                        <option value="Wedding">Wedding</option>
+                                        <option value="Events">Events</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Quale pacchetto ti interessa?" required>
+                                    <input type="text" placeholder="Which package are you interested in?" required>
                                 </div>
                                 <div class="form-group">
-                                    <select required style="color: var(--text-dark);">
-                                        <option value="" disabled selected>Dove si svolgerà il servizio fotografico?</option>
+                                    <select required style="color: #666;" onchange="this.style.color='var(--text-dark)'">
+                                        <option value="" disabled selected hidden>Where will the photoshoot take place?</option>
                                         <option value="Studio">Studio</option>
                                         <option value="Outdoor">Outdoor</option>
-                                        <option value="Location per eventi">Location per eventi</option>
+                                        <option value="Event Venue">Event Venue</option>
                                     </select>
                                 </div>
-                                <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
-                                    <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); text-align: left;">Data del servizio fotografico/evento</label>
-                                    <input type="date" required style="color: var(--text-dark);">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Date of the photoshoot/event" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Indirizzo della location" required>
+                                    <input type="text" placeholder="Venue Address" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea placeholder="Cosa apprezzi maggiormente del mio stile fotografico?" required></textarea>
+                                    <textarea placeholder="What do you like most about my photography style?" required></textarea>
                                 </div>
-                                <button type="submit" class="submit-btn" style="margin-top: 10px;">Invia richiesta</button>
+                                <button type="submit" class="submit-btn" style="margin-top: 10px;">Submit Inquiry</button>
                             </form>
                         </div>
                     </div>
