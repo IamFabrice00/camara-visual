@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="assets/logos/logo-001.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camara. Visual</title>
+    <title>CAMARA VISUAL | Photography Portfolio</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Helvetica+Neue:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-dark: #000000;
-            --bg-light: #ffffff;
-            --text-dark: #1a1a1a;
-            --text-light: #ffffff;
-            --accent: #888888;
-            --border: #e0e0e0;
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --transition-speed: 0.3s;
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --gray-light: #333333;
+            --gray-dark: #9ca3af;
+            
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            
+            --nav-height: 120px;
         }
 
         * {
@@ -28,1157 +30,965 @@
         }
 
         body {
-            font-family: var(--font-serif);
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-            overflow-x: hidden;
-            line-height: 1.8;
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-        }
-
-        body.theme-light {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: color 0.2s ease;
         }
 
-        ul {
-            list-style: none;
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
         }
 
-        h1, h2, h3, h4 {
-            font-weight: 300;
-            font-family: var(--font-serif);
-        }
-
-        /* Navigation */
-        nav {
+        /* --- NAVBAR --- */
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 100;
             width: 100%;
-            padding: 25px 40px;
+            height: var(--nav-height);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: var(--font-sans);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background-color: transparent;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 0 40px;
+            z-index: 100;
+            transition: all 0.3s ease;
+            background-color: #000000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        body.theme-light nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .nav-inner {
-            display: flex;
-            gap: 50px;
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
-            height: 35px;
+            height: 105px;
             z-index: 102;
-        }
-
-        .nav-logo a {
-            display: block;
-            height: 100%;
         }
 
         .nav-logo img {
             height: 100%;
             width: auto;
-            max-width: 100%;
+            max-height: 105px;
             display: block;
-            transition: filter 0.3s ease;
             mix-blend-mode: screen;
         }
 
-        body.theme-light .nav-logo img {
-            filter: invert(1);
-            mix-blend-mode: multiply;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-item > a {
-            cursor: pointer;
-        }
-        
-        .nav-item > a:hover {
-            color: var(--accent);
-        }
-
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: -15px;
-            padding-top: 20px;
-            padding-left: 15px;
-            padding-bottom: 15px;
-            padding-right: 30px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.2s ease-out;
-            min-width: 180px;
-            background: transparent;
-        }
-        
-        body.theme-light .dropdown {
-            background: rgba(255, 255, 255, 0.98);
-        }
-
-        .nav-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown li {
-            margin-bottom: 12px;
-        }
-
-        .dropdown a:hover {
-            color: var(--accent);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            cursor: pointer;
-            z-index: 101;
-            font-family: var(--font-sans);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 13px;
-        }
-
-        /* App Container */
-        #app {
-            min-height: 100vh;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-        
-        #app.fade-out {
-            opacity: 0;
-        }
-
-        /* Home Page */
-        .home-page {
-            height: 100vh;
-            width: 100vw;
-            position: relative;
+        .nav-controls {
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            gap: 30px;
         }
 
-        .home-video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-color: var(--bg-dark);
-        }
-
-        .home-video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .home-title {
-            font-size: clamp(48px, 6vw, 64px);
-            font-weight: 300;
-            letter-spacing: 4px;
-            text-align: center;
-            color: var(--text-light);
-            text-transform: none;
-        }
-
-        /* Works Page */
-        .works-page {
-            padding: 120px 60px 60px;
-            width: 100%;
-            max-width: 2000px;
-            margin: 0 auto;
-        }
-
-        .works-header {
-            margin-bottom: 40px;
-        }
-
-        .works-title {
-            font-size: 36px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .artist-statement-btn {
-            font-family: var(--font-sans);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .nav-icon {
+            color: #ffffff;
             cursor: pointer;
-            border: none;
-            background: none;
-            color: var(--accent);
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
-            transition: color 0.2s, border-color 0.2s;
-        }
-
-        .artist-statement-btn:hover {
-            color: var(--text-dark);
-            border-color: var(--text-dark);
-        }
-
-        .artist-statement-panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            max-width: 680px;
-        }
-
-        .artist-statement-panel.open {
-            max-height: 1000px;
-            margin-top: 25px;
-            margin-bottom: 25px;
-        }
-
-        .works-gallery {
-            column-count: 3;
-            column-gap: 20px;
-            width: 100%;
-        }
-
-        .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.02);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            font-family: var(--font-sans);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transition: color 0.3s ease, opacity 0.2s ease;
             display: flex;
-            gap: 10px;
-        }
-
-        .gallery-item:hover .gallery-caption {
-            opacity: 1;
+            align-items: center;
         }
         
-        .gallery-caption .number {
-            color: #ccc;
+        .nav-icon:hover {
+            opacity: 0.7;
         }
 
-        /* Lightbox */
-        .lightbox {
+        .hamburger {
+            width: 24px;
+            height: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        /* --- FULLSCREEN MENU OVERLAY --- */
+        .menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.97);
-            z-index: 1000;
+            background-color: var(--bg-color);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--nav-height);
+            margin-top: -40px; /* Offset to align with nav padding */
+            padding-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .close-btn {
+            font-size: 32px;
+            cursor: pointer;
+            line-height: 1;
+            font-weight: 300;
+            color: var(--text-color);
+            transition: transform 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .menu-links > li {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .menu-links > li > a, .menu-links > li > span {
+            font-family: var(--font-sans);
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .menu-links > li > a:hover, .menu-links > li > span:hover {
+            color: var(--gray-dark);
+        }
+
+        /* Dropdown Styles */
+        .category-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 0;
+        }
+
+        .category-dropdown.active {
+            max-height: 1000px;
+            transition: max-height 0.6s ease-in-out;
+            margin-top: 25px;
+        }
+
+        .category-dropdown li {
+            list-style: none;
+        }
+
+        .category-dropdown a {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-style: italic;
+            color: var(--gray-dark);
+            transition: color 0.2s ease;
+        }
+
+        .category-dropdown a:hover {
+            color: var(--text-color);
+        }
+
+        .menu-footer {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .menu-footer .nav-icon {
+            color: var(--text-color);
+            display: inline-flex;
+        }
+
+        /* --- HERO COLLAGE --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            aspect-ratio: 16/9;
+            background-color: #111;
+        }
+
+        .hero-collage {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 4px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Collage positioning */
+        .hero-img:nth-child(1) { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .hero-img:nth-child(2) { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .hero-img:nth-child(3) { grid-column: 3 / 4; grid-row: 1 / 2; }
+        .hero-img:nth-child(4) { grid-column: 2 / 4; grid-row: 2 / 3; }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.15);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            position: absolute;
+            bottom: 60px;
+            left: 40px;
+            font-family: var(--font-serif);
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-layout {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .ba-slider {
+            flex: 1;
+            position: relative;
+            aspect-ratio: 3/4;
+            max-height: 80vh;
+            overflow: hidden;
+            user-select: none;
+            cursor: ew-resize;
+            background: #111;
+        }
+
+        .ba-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .ba-before-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            border-right: 2px solid #fff;
+            pointer-events: none;
+        }
+
+        .ba-before-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            /* width is set dynamically by JS to match the slider container width */
+        }
+
+        .ba-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--gray-dark);
+            margin-bottom: 20px;
+            max-width: 500px;
+        }
+
+        /* --- PORTFOLIO FILTERS --- */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            margin-bottom: 40px;
+            padding: 0;
+        }
+
+        .portfolio-filters li {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: var(--gray-dark);
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .portfolio-filters li.active, .portfolio-filters li:hover {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .portfolio-filters li.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--text-color);
+        }
+
+        /* --- PORTFOLIO GRID --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            cursor: pointer;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        
+        .portfolio-item.hidden {
+            display: none;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        @media (hover: hover) {
+            .portfolio-item:hover img {
+                transform: scale(1.04);
+            }
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.2);
+            opacity: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            transition: opacity 0.4s ease;
+            color: #ffffff;
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (hover: hover) {
+            .portfolio-item:hover .portfolio-overlay {
+                opacity: 1;
+            }
+        }
+
+        /* --- LIGHTBOX --- */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .lightbox.active {
             opacity: 1;
-            pointer-events: auto;
+            visibility: visible;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #ffffff;
+            font-size: 32px;
+            cursor: pointer;
+            line-height: 1;
+            z-index: 1001;
+            font-family: sans-serif;
         }
 
         .lightbox-content {
             position: relative;
             max-width: 90vw;
-            max-height: 90vh;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
+            max-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .lightbox.active .lightbox-content {
-            transform: scale(1);
-        }
-
-        .lightbox img {
+        .lightbox-img {
             max-width: 100%;
-            max-height: 85vh;
+            max-height: 80vh;
             object-fit: contain;
-            display: block;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: white;
-            font-size: 35px;
-            cursor: pointer;
-            font-family: var(--font-sans);
-            line-height: 1;
-            padding: 10px;
-            opacity: 0.7;
-            transition: opacity 0.2s, transform 0.2s;
-            z-index: 1010;
-        }
-        
-        .lightbox-close:hover {
-            opacity: 1;
-            transform: scale(1.1);
         }
 
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            color: white;
-            font-size: 40px;
+            color: #ffffff;
+            font-size: 48px;
             cursor: pointer;
             padding: 20px;
             user-select: none;
-            opacity: 0.5;
-            transition: opacity 0.2s;
+            transition: opacity 0.3s ease;
+            font-family: sans-serif;
         }
         
-        .lightbox-nav:hover {
-            opacity: 1;
-        }
-
+        .lightbox-nav:hover { opacity: 0.7; }
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
-        
-        .lightbox-caption {
+
+        .lightbox-counter {
             position: absolute;
-            bottom: -35px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: #ccc;
+            bottom: 40px;
+            color: #ffffff;
             font-family: var(--font-sans);
-            font-size: 12px;
-            text-transform: uppercase;
+            font-size: 14px;
             letter-spacing: 2px;
         }
 
-        /* Information Pages */
-        .info-page {
-            padding: 150px 40px 80px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .info-content {
-            max-width: 680px;
-            margin: 0 auto;
-            font-size: 17px;
-            color: #333;
-        }
-
-        .info-title {
-            font-size: 36px;
-            margin-bottom: 60px;
-            text-align: center;
-            font-style: italic;
-        }
-
-        /* Books Page */
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
-        }
-
-        .book-card img {
-            width: 100%;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        .book-title {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            color: var(--text-dark);
-        }
-
-        /* Exhibitions & Articles */
-        .list-item {
-            padding: 25px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            gap: 40px;
-        }
-        
-        .list-item .year, .list-item .date {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            color: var(--accent);
-            width: 80px;
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-
-        /* FAQs */
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 20px 0;
-        }
-
-        .faq-question {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 40px;
+            border-top: 1px solid var(--gray-light);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--text-dark);
-            transition: color 0.2s;
-        }
-        
-        .faq-question:hover {
-            color: var(--accent);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
-            padding-top: 0;
-        }
-
-        .faq-item.active .faq-answer {
-            padding-top: 20px;
-            max-height: 500px;
-            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px 0;
-            border: none;
-            border-bottom: 1px solid var(--border);
-            background: transparent;
-            color: inherit;
-            font-family: var(--font-sans);
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        
-        .form-group select {
-            cursor: pointer;
-            border-radius: 0;
-        }
-        
-        .form-group select option {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-        }
-        
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-bottom-color: var(--text-dark);
-        }
-        
-        .form-group input::placeholder, .form-group textarea::placeholder {
-            color: var(--accent);
-            text-transform: uppercase;
+            font-size: 12px;
             letter-spacing: 1px;
-            font-size: 12px;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            align-self: flex-start;
-            padding: 12px 35px;
-            background: transparent;
-            color: var(--text-dark);
-            border: 1px solid var(--border);
-            font-family: var(--font-sans);
-            font-size: 12px;
+            color: var(--gray-dark);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s;
         }
 
-        .submit-btn:hover {
-            background: var(--text-dark);
-            color: var(--bg-light);
-            border-color: var(--text-dark);
+        footer .footer-links {
+            display: flex;
+            gap: 30px;
         }
 
-        /* Responsive */
-        @media (max-width: 1199px) {
-            .works-gallery {
-                column-count: 2;
-            }
-            .books-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        footer a:hover {
+            color: var(--text-color);
         }
 
-        @media (max-width: 767px) {
-            nav {
-                padding: 20px;
-            }
-            .nav-logo {
-                height: 25px;
-            }
-            body.theme-light .nav-inner.active ~ .nav-logo img {
-                filter: none;
-            }
-            .lightbox-close {
-                top: 20px;
-                right: 20px;
-                font-size: 30px;
-            }
-            .nav-inner {
-                display: none;
-                flex-direction: column;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background: var(--bg-dark);
-                color: var(--text-light);
-                padding: 80px 40px 40px;
-                gap: 30px;
-                z-index: 99;
-            }
-            .nav-inner.active {
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid { gap: 4px; }
+            .portfolio-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%); }
+            .lightbox-prev { left: 0; font-size: 32px; }
+            .lightbox-next { right: 0; font-size: 32px; }
+            
+            .navbar { padding: 0 20px; height: 80px; }
+            .nav-logo { height: 60px; }
+            .nav-logo img { max-height: 60px; }
+            .hero-title { left: 20px; bottom: 40px; font-size: 24px; }
+            .section { padding: 80px 20px; }
+            
+            .hero {
+                height: 80vh;
                 display: flex;
             }
-            body.theme-light .nav-inner {
-                background: rgba(255, 255, 255, 0.98);
-                color: var(--text-dark);
+            .hero-collage {
+                display: block; /* Switch to single image on mobile */
             }
-            .dropdown {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                padding-top: 15px;
-                padding-left: 15px;
-                display: none;
-                background: transparent !important;
+            .hero-img:nth-child(n+2) {
+                display: none; /* Hide other images */
             }
-            .nav-item.active .dropdown {
-                display: block;
-            }
-            .mobile-menu-btn {
-                display: block;
-                position: relative;
-                z-index: 102;
-            }
-            .works-page {
-                padding: 100px 20px 40px;
-            }
-            .works-gallery {
-                column-count: 1;
-            }
-            .books-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-page {
-                padding: 100px 20px 60px;
-            }
-            .list-item {
+
+            .about-layout {
                 flex-direction: column;
-                gap: 10px;
+                gap: 40px;
             }
-            .lightbox-prev, .lightbox-next {
-                display: none;
-            }
-            .lightbox-caption {
-                font-size: 10px;
-                bottom: -25px;
+
+            .about-text h2 { font-size: 36px; }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav id="main-nav">
-        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">MENU</div>
-        <ul class="nav-inner" id="nav-inner">
-            <li class="nav-item">
-                <a>Works</a>
-                <ul class="dropdown">
-                    <li><a href="#works/portraits">Portraits</a></li>
-                    <li><a href="#works/editorial">Editorial</a></li>
-                    <li><a href="#works/beauty-retouch">Beauty Retouch</a></li>
-                    <li><a href="#works/ecommerce">Ecommerce</a></li>
-                    <li><a href="#works/events">Events (Weddings & Birthdays)</a></li>
-                    <li><a href="#works/natural-light">Natural Light</a></li>
-                    <li><a href="#works/black-white">Black & white</a></li>
-                    <li><a href="#works/corporate-headshots">Corporate Headshots</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a>Bookings</a>
-                <ul class="dropdown">
-                    <li><a href="#bookings/pricing">Pricing</a></li>
-                    <li><a href="#bookings/faqs">FAQs</a></li>
-                    <li><a href="#bookings/contact">Contact</a></li>
-                    <li><a href="#bookings/about">About</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="nav-logo">
-            <a href="#home">
-                <img src="assets/logos/logo-001.png" alt="Camara. Visual Logo">
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">
+            <img src="assets/logos/logo-new.jpg" alt="Camara Visual Logo">
+        </a>
+        
+        <div class="nav-controls">
+            <a href="https://instagram.com" target="_blank" class="nav-icon" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
+            <div class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <div id="app"></div>
-    
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
-        <div class="lightbox-nav lightbox-prev" onclick="changeLightbox(-1)">&#10094;</div>
-        <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
+    <!-- FULLSCREEN MENU OVERLAY -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-header">
+            <div class="nav-logo">
+                <img src="assets/logos/logo-new.jpg" alt="Camara Visual Logo">
+            </div>
+            <div class="close-btn" id="close-btn">✕</div>
         </div>
-        <div class="lightbox-nav lightbox-next" onclick="changeLightbox(1)">&#10095;</div>
+        
+        <ul class="menu-links">
+            <li><a href="#home" class="menu-item">HOME</a></li>
+            <li><a href="#about" class="menu-item">ABOUT</a></li>
+            <li>
+                <span id="category-toggle">WORKS</span>
+                <ul class="category-dropdown" id="category-dropdown">
+                    <li><a href="#portraits" class="menu-item">Portraits</a></li>
+                    <li><a href="#editorial" class="menu-item">Editorial</a></li>
+                    <li><a href="#beauty-retouch" class="menu-item">Beauty Retouch</a></li>
+                    <li><a href="#ecommerce" class="menu-item">Ecommerce</a></li>
+                    <li><a href="#events" class="menu-item">Events</a></li>
+                    <li><a href="#natural-light" class="menu-item">Natural Light</a></li>
+                    <li><a href="#black-white" class="menu-item">Black & white</a></li>
+                    <li><a href="#corporate-headshots" class="menu-item">Corporate Headshots</a></li>
+                </ul>
+            </li>
+            <li><a href="booking.html" class="menu-item">BOOKING</a></li>
+        </ul>
+
+        <div class="menu-footer">
+            <a href="https://instagram.com" target="_blank" class="nav-icon" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+        </div>
     </div>
 
+    <!-- HERO SECTION (COLLAGE) -->
+    <header class="hero" id="home">
+        <div class="hero-collage">
+            <div class="hero-img" style="background-image: url('assets/portraits/portrait-002.webp');"></div>
+            <div class="hero-img" style="background-image: url('assets/editorial/editorial-001.webp'); background-position: top;"></div>
+            <div class="hero-img" style="background-image: url('assets/editorial/editorial-003.webp');"></div>
+            <div class="hero-img" style="background-image: url('assets/editorial/editorial-004.webp'); background-position: center 30%;"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <h1 class="hero-title">PORTFOLIO</h1>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="section" id="about">
+        <div class="about-layout">
+            <div class="ba-slider" id="ba-slider">
+                <img src="assets/beauty-retouch/after.jpg" alt="After Retouch" class="ba-after">
+                <div class="ba-before-wrapper" id="ba-before-wrapper">
+                    <img src="assets/beauty-retouch/before.jpg" alt="Before Retouch" class="ba-before-img" id="ba-before-img">
+                </div>
+                <div class="ba-handle" id="ba-handle">
+                    <div class="ba-handle-circle">↔</div>
+                </div>
+            </div>
+            <div class="about-text">
+                <h2>Behind the Lens</h2>
+                <p>Welcome to my visual diary. I am a passionate photographer specializing in editorial, portrait, and lifestyle photography. My work focuses on capturing raw, authentic moments and transforming them into timeless visual stories.</p>
+                <p>Based in Milan, working worldwide. My approach combines classic compositional techniques with a modern, minimal aesthetic.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="section" id="portfolio">
+        <ul class="portfolio-filters" id="portfolio-filters">
+            <li class="active" data-filter="all">All</li>
+            <li data-filter="portraits">Portraits</li>
+            <li data-filter="editorial">Editorial</li>
+            <li data-filter="beauty">Beauty Retouch</li>
+            <li data-filter="ecommerce">Ecommerce</li>
+            <li data-filter="events">Events</li>
+            <li data-filter="natural">Natural Light</li>
+            <li data-filter="bw">Black & White</li>
+            <li data-filter="corporate">Corporate Headshots</li>
+        </ul>
+
+        <div class="portfolio-grid" id="portfolio-grid">
+            <div class="portfolio-item" data-category="portraits">
+                <img src="assets/portraits/portrait-001.webp" alt="Portrait 1">
+                <div class="portfolio-overlay">Portraits</div>
+            </div>
+            <div class="portfolio-item" data-category="editorial">
+                <img src="assets/editorial/editorial-002.webp" alt="Editorial 1">
+                <div class="portfolio-overlay">Editorial</div>
+            </div>
+            <div class="portfolio-item" data-category="beauty">
+                <img src="assets/beauty-retouch/beauty-retouch-001.webp" alt="Beauty Retouch 1">
+                <div class="portfolio-overlay">Beauty Retouch</div>
+            </div>
+            <div class="portfolio-item" data-category="ecommerce">
+                <img src="assets/ecommerce/ecommerce-001.webp" alt="Ecommerce 1">
+                <div class="portfolio-overlay">Ecommerce</div>
+            </div>
+            <div class="portfolio-item" data-category="events">
+                <img src="assets/events/event-001.webp" alt="Event 1">
+                <div class="portfolio-overlay">Events</div>
+            </div>
+            <div class="portfolio-item" data-category="natural">
+                <img src="assets/natural-light/natural-light-001.webp" alt="Natural Light 1">
+                <div class="portfolio-overlay">Natural Light</div>
+            </div>
+            <div class="portfolio-item" data-category="bw">
+                <img src="assets/black-white/black-white-001.webp" alt="Black & White 1">
+                <div class="portfolio-overlay">Black & White</div>
+            </div>
+            <div class="portfolio-item" data-category="corporate">
+                <img src="assets/corporate-headshots/corporate-headshot-001.webp" alt="Corporate 1">
+                <div class="portfolio-overlay">Corporate Headshots</div>
+            </div>
+            <div class="portfolio-item" data-category="portraits">
+                <img src="assets/portraits/portrait-003.webp" alt="Portrait 2">
+                <div class="portfolio-overlay">Portraits</div>
+            </div>
+            <div class="portfolio-item" data-category="editorial">
+                <img src="assets/editorial/editorial-005.webp" alt="Editorial 2">
+                <div class="portfolio-overlay">Editorial</div>
+            </div>
+            <div class="portfolio-item" data-category="bw">
+                <img src="assets/black-white/black-white-004.webp" alt="Black & White 2">
+                <div class="portfolio-overlay">Black & White</div>
+            </div>
+            <div class="portfolio-item" data-category="ecommerce">
+                <img src="assets/ecommerce/ecommerce-003.webp" alt="Ecommerce 2">
+                <div class="portfolio-overlay">Ecommerce</div>
+            </div>
+            <div class="portfolio-item" data-category="editorial">
+                <img src="assets/editorial/editorial-006.webp" alt="Editorial 3">
+                <div class="portfolio-overlay">Editorial</div>
+            </div>
+            <div class="portfolio-item" data-category="beauty">
+                <img src="assets/beauty-retouch/beauty-retouch-002.webp" alt="Beauty Retouch 2">
+                <div class="portfolio-overlay">Beauty Retouch</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" id="lightbox-close">✕</div>
+        <div class="lightbox-nav lightbox-prev" id="lightbox-prev">⟨</div>
+        <div class="lightbox-content">
+            <img src="" alt="Fullscreen Image" class="lightbox-img" id="lightbox-img">
+        </div>
+        <div class="lightbox-nav lightbox-next" id="lightbox-next">⟩</div>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="booking">
+        <div>&copy; 2026 CAMARA VISUAL. ALL RIGHTS RESERVED.</div>
+        <div class="footer-links">
+            <a href="mailto:hello@camaravisual.com">HELLO@CAMARAVISUAL.COM</a>
+            <a href="#">PRIVACY POLICY</a>
+        </div>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+    </footer>
+
+    <!-- JAVASCRIPT -->
     <script>
-        // Data Structure
-                const worksData = {
-            portraits: {
-                title: "Portraits",
-                statement: "Capturing the essence and personality of the subject through compelling portrait photography.",
-                images: [
-                    "assets/portraits/portrait-001.webp",
-                    "assets/portraits/portrait-002.webp",
-                    "assets/portraits/portrait-003.webp",
-                    "assets/portraits/portrait-004.webp"
-                ]
-            },
-            editorial: {
-                title: "Editorial",
-                statement: "Visual storytelling tailored for publications, blending fashion, lifestyle, and narrative elements.",
-                images: [
-                    "assets/editorial/editorial-001.webp",
-                    "assets/editorial/editorial-002.webp",
-                    "assets/editorial/editorial-003.webp",
-                    "assets/editorial/editorial-004.webp",
-                    "assets/editorial/editorial-005.webp",
-                    "assets/editorial/editorial-006.webp",
-                    "assets/editorial/editorial-007.webp"
-                ]
-            },
-            'beauty-retouch': {
-                title: "Beauty Retouch",
-                statement: "High-end beauty photography emphasizing flawless skin, makeup artistry, and meticulous post-production.",
-                images: [
-                    "assets/beauty-retouch/beauty-retouch-001.webp",
-                    "assets/beauty-retouch/beauty-retouch-002.webp"
-                ]
-            },
-            ecommerce: {
-                title: "Ecommerce",
-                statement: "Clean, consistent, and high-quality product photography designed to elevate online retail experiences.",
-                images: [
-                    "assets/ecommerce/ecommerce-001.webp",
-                    "assets/ecommerce/ecommerce-002.webp",
-                    "assets/ecommerce/ecommerce-003.webp",
-                    "assets/ecommerce/ecommerce-004.webp",
-                    "assets/ecommerce/ecommerce-005.webp",
-                    "assets/ecommerce/ecommerce-006.webp",
-                    "assets/ecommerce/ecommerce-007.webp"
-                ]
-            },
-            events: {
-                title: "Events (Weddings & Birthdays)",
-                statement: "Documenting life's most precious moments with candid and elegant event coverage.",
-                images: [
-                    "assets/events/event-001.webp",
-                    "assets/events/event-002.webp",
-                    "assets/events/event-003.webp",
-                    "assets/events/event-004.webp",
-                    "assets/events/event-005.webp"
-                ]
-            },
-            'natural-light': {
-                title: "Natural Light",
-                statement: "Harnessing the beauty of available light to create authentic, soft, and cinematic visuals.",
-                images: [
-                    "assets/natural-light/natural-light-001.webp",
-                    "assets/natural-light/natural-light-002.webp",
-                    "assets/natural-light/natural-light-003.webp",
-                    "assets/natural-light/natural-light-004.webp",
-                    "assets/natural-light/natural-light-005.webp"
-                ]
-            },
-            'black-white': {
-                title: "Black & white",
-                statement: "Focusing on contrast, texture, and emotion through the timeless medium of black and white photography.",
-                images: [
-                    "assets/black-white/black-white-001.webp",
-                    "assets/black-white/black-white-002.webp",
-                    "assets/black-white/black-white-003.webp",
-                    "assets/black-white/black-white-004.webp",
-                    "assets/black-white/black-white-005.webp",
-                    "assets/black-white/black-white-006.webp"
-                ]
-            },
-            'corporate-headshots': {
-                title: "Corporate Headshots",
-                statement: "Professional, polished, and approachable headshots for modern business communication.",
-                images: [
-                    "assets/corporate-headshots/corporate-headshot-001.webp",
-                    "assets/corporate-headshots/corporate-headshot-002.webp",
-                    "assets/corporate-headshots/corporate-headshot-003.webp",
-                    "assets/corporate-headshots/corporate-headshot-004.webp",
-                    "assets/corporate-headshots/corporate-headshot-005.webp",
-                    "assets/corporate-headshots/corporate-headshot-006.webp"
-                ]
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-        };
+        });
 
-        const booksData = [
-            { title: "Equus", year: 2008, desc: "A sweeping, global study of the horse." },
-            { title: "DogsGods", year: 2010, desc: "Portraits exploring the human-dog bond." },
-            { title: "More Than Human", year: 2012, desc: "Intimate animal portraits bridging the species divide." },
-            { title: "Evolution", year: 2013, desc: "A visual exploration of scientific evolution." },
-            { title: "Endangered", year: 2017, desc: "A powerful tribute to species on the edge." },
-            { title: "Who am I?", year: 2019, desc: "An introspective look into animal identity." },
-            { title: "Birds", year: 2021, desc: "The stunning diversity of avian life." }
-        ];
+        // Menu Overlay Logic
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuItems = document.querySelectorAll('.menu-item');
 
-        const homeVideos = [
-            "assets/videos/home-video.mov?v=3"
-        ];
-
-        // Routing & Rendering
-        const app = document.getElementById('app');
-
-        window.addEventListener('hashchange', handleRoute);
-        window.addEventListener('load', handleRoute);
-
-        function handleRoute() {
-            let hash = window.location.hash.slice(1);
-            if (!hash) hash = 'home';
-            
-            const [section, page] = hash.split('/');
-            
-            app.classList.add('fade-out');
-            
-            setTimeout(() => {
-                if (section === 'home') {
-                    renderHome();
-                } else if (section === 'works') {
-                    renderWorks(page || 'portraits');
-                } else if (section === 'bookings') {
-                    renderInfo(page || 'about');
-                } else {
-                    renderHome();
-                }
-                
-                app.classList.remove('fade-out');
-                window.scrollTo(0, 0);
-                closeMobileMenu();
-            }, 300);
+        function toggleMenu() {
+            menuOverlay.classList.toggle('active');
+            // Disable body scroll when menu is open
+            document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
         }
 
-        function renderHome() {
-            document.body.classList.remove('theme-light');
-            app.innerHTML = `
-                <div class="home-page">
-                    <div class="home-video-container">
-                        <video id="home-video" autoplay muted playsinline loop poster="assets/editorial/editorial-001.webp?v=3" src="${homeVideos[0]}">
-                        </video>
-                    </div>
-                    <h1 class="home-title">Camara. Visual</h1>
-                </div>
-            `;
-            
-            // Setup Video Loop (fallback for multiple videos if needed)
-            const videoEl = document.getElementById('home-video');
-            if (videoEl && homeVideos.length > 1) {
-                let currentVideoIdx = 0;
-                videoEl.removeAttribute('loop');
-                videoEl.addEventListener('ended', () => {
-                    currentVideoIdx = (currentVideoIdx + 1) % homeVideos.length;
-                    videoEl.src = homeVideos[currentVideoIdx];
-                    videoEl.play().catch(e => console.log('Autoplay handled by browser constraints'));
-                });
-            }
-        }
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
 
-        // Helper to generate varied dimensions for masonry layout
-        function getMasonryDimensions(index) {
-            const pattern = index % 5;
-            if (pattern === 0) return '1200/900';   // Landscape
-            if (pattern === 1) return '900/1200';   // Portrait
-            if (pattern === 2) return '1000/1000';  // Square
-            if (pattern === 3) return '1200/800';   // Wide
-            return '800/1000';                      // Tall
-        }
-
-        function renderWorks(category) {
-            document.body.classList.add('theme-light');
-            const work = worksData[category];
-            if (!work) {
-                window.location.hash = 'works/portraits';
-                return;
-            }
-            
-            let galleryHTML = work.images.map((path, index) => {
-                const title = path.split('/').pop().split('.')[0].replace('-', ' ');
-                return `
-                    <div class="gallery-item" onclick="openLightbox('${category}', ${index})">
-                        <img src="${path}?v=3" alt="${title}" loading="lazy">
-                        <div class="gallery-caption">
-                            <span class="number">${index + 1}</span>
-                            <span class="title">${title}</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            
-            app.innerHTML = `
-                <div class="works-page">
-                    <div class="works-header">
-                        <h2 class="works-title">${work.title}</h2>
-                        <button class="artist-statement-btn" onclick="toggleStatement()">Artist Statement</button>
-                    </div>
-                    <div class="artist-statement-panel" id="statement-panel">
-                        <div class="info-content" style="margin: 0; padding-bottom: 20px;">
-                            <p>${work.statement}</p>
-                            <p style="margin-top: 15px;">
-                                <a href="#" style="text-decoration: underline; font-family: var(--font-sans); font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Download PDF</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="works-gallery">
-                        ${galleryHTML}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderInfo(page) {
-            document.body.classList.add('theme-light');
-            
-            // Redirect booking to pricing since they are now unified
-            if (page === 'booking') {
-                window.location.hash = 'bookings/pricing';
-                return;
-            }
-            
-            let content = '';
-            let title = page.charAt(0).toUpperCase() + page.slice(1);
-            
-            if (page === 'about') {
-                content = `
-                    <div class="info-content">
-                        <p>Camara. Visual is known for his captivating and thought-provoking images of the animal kingdom. He captures both the power and vulnerability of animals, highlighting their undeniable connection with humans and transporting audiences to a new visual perspective on wildlife and conservation.</p>
-                        <br>
-                        <p>Flach has five main bodies of work which have been exhibited worldwide, including Museums of Natural History, from Paris to Beijing. He has seven international award-winning books, translated into multiple languages.</p>
-                        <br>
-                        <p style="text-align: center; font-style: italic; font-size: 15px;">Portraits &mdash; Editorial &mdash; Beauty Retouch &mdash; Ecommerce &mdash; Events &mdash; Natural Light &mdash; Black & white &mdash; Corporate Headshots</p>
-                        <br>
-                        <p>Tim has been awarded an Honorary Doctorate from the University of the Arts London (Norwich) and an Honorary Fellowship by the Royal Photographic Society. He is also a Senior Research Fellow (Artist in Residence) at Centre for Eudaimonia and Human Flourishing at Linacre College, University of Oxford, and serves as President of the Association of Photographers.</p>
-                        <br>
-                        <p>He lives in London with his wife and son.</p>
-                    </div>
-                `;
-            } else if (page === 'pricing') {
-                content = `
-                    <div class="info-content">
-                        <div class="list-item" style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="text-transform: uppercase; letter-spacing: 1px; font-size: 14px; margin-bottom: 5px; color: var(--text-dark);">Portraits & Headshots</div>
-                                <div style="font-style: italic; color: #666;">1 hour session, 10 retouched photos</div>
-                            </div>
-                            <div class="year" style="font-size: 16px; width: auto;">Starting at $300</div>
-                        </div>
-                        <div class="list-item" style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="text-transform: uppercase; letter-spacing: 1px; font-size: 14px; margin-bottom: 5px; color: var(--text-dark);">Editorial & Beauty Retouch</div>
-                                <div style="font-style: italic; color: #666;">Half-day studio session</div>
-                            </div>
-                            <div class="year" style="font-size: 16px; width: auto;">Starting at $800</div>
-                        </div>
-                        <div class="list-item" style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <div style="text-transform: uppercase; letter-spacing: 1px; font-size: 14px; margin-bottom: 5px; color: var(--text-dark);">Event Coverage</div>
-                                <div style="font-style: italic; color: #666;">Weddings, Birthdays, Corporate Events</div>
-                            </div>
-                            <div class="year" style="font-size: 16px; width: auto;">Custom Quote</div>
-                        </div>
-                        
-                        <div style="margin-top: 60px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 40px;">
-                            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 15px; margin-bottom: 20px; font-family: var(--font-sans); text-align: center; color: var(--text-dark);">Request a Session</h3>
-                            <form class="contact-form" onsubmit="event.preventDefault(); alert('Inquiry submitted successfully!');">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Full Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" placeholder="Email Address" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" placeholder="Phone Number" required>
-                                </div>
-                                <div class="form-group">
-                                    <select required style="color: #666;" onchange="this.style.color='var(--text-dark)'">
-                                        <option value="" disabled selected hidden>How did you hear about my work?</option>
-                                        <option value="Instagram">Instagram</option>
-                                        <option value="Word of Mouth">Word of Mouth</option>
-                                        <option value="Google">Google</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select required style="color: #666;" onchange="this.style.color='var(--text-dark)'">
-                                        <option value="" disabled selected hidden>What type of photoshoot would you like to book?</option>
-                                        <option value="Portraits & Headshots">Portraits & Headshots</option>
-                                        <option value="Wedding">Wedding</option>
-                                        <option value="Events">Events</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Which package are you interested in?" required>
-                                </div>
-                                <div class="form-group">
-                                    <select required style="color: #666;" onchange="this.style.color='var(--text-dark)'">
-                                        <option value="" disabled selected hidden>Where will the photoshoot take place?</option>
-                                        <option value="Studio">Studio</option>
-                                        <option value="Outdoor">Outdoor</option>
-                                        <option value="Event Venue">Event Venue</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Date of the photoshoot/event" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Venue Address" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea placeholder="What do you like most about my photography style?" required></textarea>
-                                </div>
-                                <button type="submit" class="submit-btn" style="margin-top: 10px;">Submit Inquiry</button>
-                            </form>
-                        </div>
-                    </div>
-                `;
-            } else if (page === 'faqs') {
-                const questions = [
-                    "Do you sell prints of your work?",
-                    "How can I license an image for commercial use?",
-                    "Are you available for commercial commissions?",
-                    "Where can I see your exhibitions?",
-                    "Which camera equipment do you use?",
-                    "How do you approach lighting your animal subjects?"
-                ];
-                const faqsHTML = questions.map(q => `
-                    <div class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">
-                            ${q}
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p style="font-size: 15px; color: #555; line-height: 1.6;">For inquiries related to this topic, please contact the studio via the Contact page. Our team handles print sales, image licensing, and commission requests directly. Thank you for your interest in Camara. Visual's photography.</p>
-                        </div>
-                    </div>
-                `).join('');
-                content = `<div class="info-content">${faqsHTML}</div>`;
-            } else if (page === 'contact') {
-                content = `
-                    <div class="info-content">
-                        <p style="margin-bottom: 20px;">For general enquiries, print sales, or commission requests, please use the form below or contact our London studio directly.</p>
-                        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-                            <div class="form-group">
-                                <input type="text" placeholder="Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Email" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea placeholder="Message" required></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn">Submit</button>
-                        </form>
-                        <div style="margin-top: 80px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 40px;">
-                            <p style="color: var(--accent); margin-bottom: 5px;">Studio Address</p>
-                            <p style="color: var(--text-dark);">London, UK<br>Please contact us to arrange a visit.</p>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            app.innerHTML = `
-                <div class="info-page">
-                    <h1 class="info-title">${title}</h1>
-                    ${content}
-                </div>
-            `;
-        }
-
-        // Interactions
-        function toggleStatement() {
-            const panel = document.getElementById('statement-panel');
-            panel.classList.toggle('open');
-        }
-
-        function toggleFaq(element) {
-            const isActive = element.classList.contains('active');
-            
-            document.querySelectorAll('.faq-item').forEach(el => {
-                el.classList.remove('active');
-                el.querySelector('.icon').textContent = '+';
+        // Close menu when clicking a link
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
             });
-            
-            if (!isActive) {
-                element.classList.add('active');
-                element.querySelector('.icon').textContent = '-';
-            }
-        }
+        });
 
-        // Lightbox
-        let currentGallery = [];
-        let currentCategory = '';
-        let currentImageIndex = 0;
+        // Category Dropdown Toggle
+        const categoryToggle = document.getElementById('category-toggle');
+        const categoryDropdown = document.getElementById('category-dropdown');
 
-        function openLightbox(category, index) {
-            currentCategory = category;
-            currentImageIndex = index;
-            currentGallery = worksData[category].images;
-            
-            updateLightboxImage();
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+        categoryToggle.addEventListener('click', () => {
+            categoryDropdown.classList.toggle('active');
+        });
 
+        // Portfolio Filtering and Lightbox
+        const filters = document.querySelectorAll('#portfolio-filters li');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        
+        let currentFilter = 'all';
+        let visibleItems = Array.from(portfolioItems);
+        let currentIndex = 0;
+
+        // Filter Logic
+        filters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                // Update active class
+                filters.forEach(f => f.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentFilter = this.getAttribute('data-filter');
+                visibleItems = [];
+
+                portfolioItems.forEach(item => {
+                    if (currentFilter === 'all' || item.getAttribute('data-category') === currentFilter) {
+                        item.classList.remove('hidden');
+                        // Timeout allows display:block to apply before opacity transition
+                        setTimeout(() => item.style.opacity = '1', 10);
+                        visibleItems.push(item);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.classList.add('hidden'), 400); // Match CSS transition
+                    }
+                });
+            });
+        });
+
+        // Open Lightbox
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', function() {
+                currentIndex = visibleItems.indexOf(this);
+                if(currentIndex === -1) currentIndex = 0;
+                
+                updateLightboxImage();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close Lightbox
         function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
+            lightbox.classList.remove('active');
             document.body.style.overflow = '';
         }
+        
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === document.querySelector('.lightbox-content')) {
+                closeLightbox();
+            }
+        });
 
-        function changeLightbox(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = currentGallery.length - 1;
-            if (currentImageIndex >= currentGallery.length) currentImageIndex = 0;
+        // Navigate Lightbox
+        function showNext() {
+            if(visibleItems.length === 0) return;
+            currentIndex = (currentIndex + 1) % visibleItems.length;
             updateLightboxImage();
         }
 
-        function updateLightboxImage() {
-            const img = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
-            
-            const path = currentGallery[currentImageIndex];
-            const title = path.split('/').pop().split('.')[0].replace('-', ' ');
-            
-            img.src = path + '?v=3';
-            caption.textContent = `${currentImageIndex + 1} / ${currentGallery.length} — ${title}`;
+        function showPrev() {
+            if(visibleItems.length === 0) return;
+            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+            updateLightboxImage();
         }
 
-        // Keyboard navigation for Lightbox
+        lightboxNext.addEventListener('click', showNext);
+        lightboxPrev.addEventListener('click', showPrev);
+
+        function updateLightboxImage() {
+            if(visibleItems.length === 0) return;
+            const imgEl = visibleItems[currentIndex].querySelector('img');
+            lightboxImg.src = imgEl.src;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+        }
+
+        // Keyboard support
         document.addEventListener('keydown', (e) => {
-            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (!lightbox.classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') changeLightbox(-1);
-            if (e.key === 'ArrowRight') changeLightbox(1);
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
         });
 
-        // Mobile Menu
-        function toggleMobileMenu() {
-            document.getElementById('nav-inner').classList.toggle('active');
-            const btn = document.querySelector('.mobile-menu-btn');
-            if (document.getElementById('nav-inner').classList.contains('active')) {
-                btn.textContent = 'CLOSE';
-            } else {
-                btn.textContent = 'MENU';
+        // Before/After Slider Logic
+        const baSlider = document.getElementById('ba-slider');
+        const baBeforeWrapper = document.getElementById('ba-before-wrapper');
+        const baBeforeImg = document.getElementById('ba-before-img');
+        const baHandle = document.getElementById('ba-handle');
+        
+        let isDragging = false;
+
+        function updateSlider(x) {
+            const rect = baSlider.getBoundingClientRect();
+            let xPos = x - rect.left;
+            xPos = Math.max(0, Math.min(xPos, rect.width)); // clamp
+            const percentage = (xPos / rect.width) * 100;
+            
+            baBeforeWrapper.style.width = percentage + '%';
+            baHandle.style.left = percentage + '%';
+        }
+
+        function setBeforeImgWidth() {
+            if(baSlider && baBeforeImg) {
+                baBeforeImg.style.width = baSlider.offsetWidth + 'px';
             }
         }
 
-        function closeMobileMenu() {
-            document.getElementById('nav-inner').classList.remove('active');
-            document.querySelector('.mobile-menu-btn').textContent = 'MENU';
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-        }
-
-        document.querySelectorAll('.nav-item > a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (window.innerWidth < 768) {
-                    const item = e.target.parentElement;
-                    item.classList.toggle('active');
-                }
-            });
+        baSlider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateSlider(e.clientX);
         });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.clientX);
+        });
+
+        // Touch support
+        baSlider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            updateSlider(e.touches[0].clientX);
+        }, {passive: true});
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.touches[0].clientX);
+        }, {passive: true});
+
+        // Initialize before image width
+        window.addEventListener('resize', setBeforeImgWidth);
+        window.addEventListener('load', setBeforeImgWidth);
+        setTimeout(setBeforeImgWidth, 100); // Immediate fallback
 
     </script>
 </body>

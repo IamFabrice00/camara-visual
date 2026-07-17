@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Professional Photography Session | CAMARA VISUAL</title>
+    <meta name="description" content="Book your photography session for portraits, editorial, beauty, weddings, events and commercial projects. Request a personalized quote today.">
+    <meta name="keywords" content="professional photographer booking, book photography session, portrait photographer, editorial photographer, beauty photographer, fashion photographer, commercial photographer, event photographer, wedding photographer, luxury photographer, book portrait session, professional photoshoot, creative photographer, photography services">
+    
+    <!-- Preload fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --gray-light: #333333;
+            --gray-dark: #9ca3af;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --nav-height: 120px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; object-fit: cover; }
+
+        /* NAVBAR & MENU */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height); display: flex; justify-content: space-between; align-items: center; padding: 0 40px; z-index: 100; transition: all 0.3s ease; background-color: #000000; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); }
+        .nav-logo { display: flex; align-items: center; height: 105px; z-index: 102; }
+        .nav-logo img { height: 100%; width: auto; max-height: 105px; display: block; mix-blend-mode: screen; }
+        .nav-controls { display: flex; align-items: center; gap: 30px; }
+        .nav-icon { color: #ffffff; cursor: pointer; transition: opacity 0.2s; display: flex; align-items: center; }
+        .nav-icon:hover { opacity: 0.7; }
+        .hamburger { width: 24px; height: 16px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+        .hamburger span { display: block; width: 100%; height: 2px; background-color: #ffffff; transition: 0.3s; }
+        
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--bg-color); z-index: 200; display: flex; flex-direction: column; padding: 40px; opacity: 0; visibility: hidden; transition: 0.4s; }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
+        .menu-header { display: flex; justify-content: space-between; align-items: center; height: var(--nav-height); margin-top: -40px; padding-top: 40px; margin-bottom: 60px; }
+        .close-btn { font-size: 32px; cursor: pointer; line-height: 1; font-weight: 300; transition: transform 0.3s; }
+        .close-btn:hover { transform: scale(1.1); }
+        .menu-links { display: flex; flex-direction: column; align-items: center; gap: 30px; flex-grow: 1; overflow-y: auto; }
+        .menu-links > li { list-style: none; text-align: center; width: 100%; }
+        .menu-links > li > a, .menu-links > li > span { font-family: var(--font-sans); font-size: 24px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .menu-links > li > a:hover, .menu-links > li > span:hover { color: var(--gray-dark); }
+        .category-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.4s; }
+        .category-dropdown.active { max-height: 500px; }
+        .category-dropdown li { list-style: none; margin-top: 15px; }
+        .category-dropdown a { font-size: 16px; color: var(--gray-dark); }
+        .category-dropdown a:hover { color: #fff; }
+        .menu-footer { display: flex; justify-content: center; margin-top: 40px; }
+
+        /* COMMON COMPONENTS */
+        .section { padding: 120px 40px; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-family: var(--font-serif); font-size: 40px; font-weight: 400; margin-bottom: 20px; }
+        .section-header p { color: var(--gray-dark); max-width: 600px; margin: 0 auto; font-size: 16px; }
+
+        .btn { display: inline-block; padding: 15px 40px; background: transparent; border: 1px solid #fff; color: #fff; font-family: var(--font-sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.3s ease; text-align: center; text-decoration: none; }
+        .btn:hover, .btn:focus { background: #fff; color: #000; }
+        .btn.btn-primary { background: #fff; color: #000; }
+        .btn.btn-primary:hover { background: transparent; color: #fff; }
+
+        /* HERO BOOKING */
+        .hero-booking { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; background-image: url('assets/editorial/editorial-005.webp'); background-size: cover; background-position: center 30%; }
+        .hero-booking::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.6); pointer-events: none; }
+        .hero-booking-content { position: relative; z-index: 10; max-width: 800px; }
+        .hero-booking h1 { font-family: var(--font-serif); font-size: 64px; font-weight: 400; margin-bottom: 20px; letter-spacing: 1px; }
+        .hero-booking p { font-size: 18px; color: #ddd; margin-bottom: 40px; font-weight: 300; }
+        .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10; font-size: 24px; color: #fff; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-10px) translateX(-50%); } 60% { transform: translateY(-5px) translateX(-50%); } }
+
+        /* INTRODUCTION */
+        .intro-text { text-align: center; max-width: 800px; margin: 0 auto; font-size: 20px; color: var(--gray-dark); font-weight: 300; line-height: 1.8; }
+
+        /* PRICING */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .pricing-card { border: 1px solid var(--gray-light); padding: 50px 40px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+        .pricing-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: #555; }
+        .pricing-card h3 { font-family: var(--font-serif); font-size: 28px; margin-bottom: 15px; font-weight: 400; }
+        .pricing-card .desc { color: var(--gray-dark); font-size: 14px; margin-bottom: 30px; min-height: 40px; }
+        .pricing-list { list-style: none; margin-bottom: 40px; flex-grow: 1; }
+        .pricing-list li { margin-bottom: 15px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; color: #ccc; }
+        .pricing-list li svg { flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px; color: #fff; }
+        .pricing-price { margin-bottom: 30px; }
+        .pricing-price span { display: block; font-size: 12px; color: var(--gray-dark); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .pricing-price strong { font-size: 32px; font-family: var(--font-serif); font-weight: 400; }
+
+        /* WHY ME GRID */
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .why-item { display: flex; align-items: center; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--gray-light); }
+        .why-item svg { width: 24px; height: 24px; color: var(--text-color); }
+        .why-item h3 { font-weight: 300; font-size: 18px; letter-spacing: 1px; }
+
+        /* BOOKING FORM */
+        .form-container { max-width: 800px; margin: 0 auto; }
+        .form-group { margin-bottom: 40px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .form-label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-dark); margin-bottom: 10px; }
+        .form-control { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--gray-light); color: #fff; padding: 10px 0; font-family: var(--font-sans); font-size: 16px; transition: border-color 0.3s; border-radius: 0; }
+        .form-control:focus { outline: none; border-bottom-color: #fff; }
+        .form-control::placeholder { color: #444; }
+        textarea.form-control { resize: vertical; min-height: 100px; }
+        
+        select.form-control { appearance: none; background: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right center; cursor: pointer; }
+        select.form-control option { background: #111; color: #fff; padding: 10px; }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+
+        /* File Upload */
+        .file-upload { border: 1px dashed var(--gray-light); padding: 40px; text-align: center; cursor: pointer; transition: 0.3s; position: relative; }
+        .file-upload:hover, .file-upload.dragover { border-color: #fff; background: rgba(255,255,255,0.05); }
+        .file-upload input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .file-upload p { font-size: 14px; color: var(--gray-dark); pointer-events: none; }
+        
+        /* Checkbox & Radio */
+        .checkbox-group { display: flex; align-items: flex-start; gap: 15px; margin-top: 40px; }
+        .checkbox-group input { margin-top: 4px; accent-color: #fff; cursor: pointer; }
+        .checkbox-group label { font-size: 12px; color: var(--gray-dark); cursor: pointer; }
+        .radio-options { display: flex; gap: 30px; margin-top: 15px; }
+        .radio-options label { display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; color: #ccc; }
+        .radio-options input { accent-color: #fff; cursor: pointer; }
+
+        .form-submit { text-align: center; margin-top: 60px; }
+
+        /* FAQ */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--gray-light); }
+        .faq-question { width: 100%; text-align: left; background: none; border: none; color: #fff; font-family: var(--font-sans); font-size: 18px; padding: 30px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 300; }
+        .faq-question::after { content: '+'; font-size: 24px; font-weight: 300; transition: transform 0.3s; color: var(--gray-dark); }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); color: #fff; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--gray-dark); font-size: 15px; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 30px; }
+
+        /* CTA SECTION */
+        .cta-section { padding: 150px 20px; text-align: center; background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url('assets/beauty-retouch/beauty-retouch-002.webp'); background-size: cover; background-position: center; position: relative; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.8); }
+        .cta-content { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; }
+        .cta-content h2 { font-family: var(--font-serif); font-size: 48px; margin-bottom: 20px; font-weight: 400; }
+        .cta-content p { color: var(--gray-dark); margin-bottom: 40px; font-size: 18px; }
+
+        /* FOOTER */
+        footer { padding: 80px 40px; border-top: 1px solid var(--gray-light); display: flex; justify-content: space-between; align-items: center; font-size: 12px; letter-spacing: 1px; color: var(--gray-dark); text-transform: uppercase; }
+        footer .footer-links { display: flex; gap: 30px; }
+        footer a:hover { color: var(--text-color); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; height: 80px; }
+            .nav-logo { height: 60px; }
+            .nav-logo img { max-height: 60px; }
+            .section { padding: 80px 20px; }
+            .hero-booking h1 { font-size: 40px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; gap: 40px; }
+            .section-header h2 { font-size: 32px; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+            .radio-options { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logos/logo-new.jpg" alt="Camara Visual Logo">
+            </a>
+            
+            <div class="nav-controls">
+                <a href="https://instagram.com" target="_blank" class="nav-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <div class="hamburger" id="hamburger-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FULLSCREEN MENU OVERLAY -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-header">
+            <div class="nav-logo">
+                <img src="assets/logos/logo-new.jpg" alt="Camara Visual Logo">
+            </div>
+            <div class="close-btn" id="close-btn">✕</div>
+        </div>
+        
+        <ul class="menu-links">
+            <li><a href="index.html" class="menu-item">HOME</a></li>
+            <li><a href="index.html#about" class="menu-item">ABOUT</a></li>
+            <li>
+                <span id="category-toggle">WORKS</span>
+                <ul class="category-dropdown" id="category-dropdown">
+                    <li><a href="index.html#portfolio" class="menu-item">Portraits</a></li>
+                    <li><a href="index.html#portfolio" class="menu-item">Editorial</a></li>
+                    <li><a href="index.html#portfolio" class="menu-item">Beauty Retouch</a></li>
+                    <li><a href="index.html#portfolio" class="menu-item">Ecommerce</a></li>
+                    <li><a href="index.html#portfolio" class="menu-item">Events</a></li>
+                </ul>
+            </li>
+            <li><a href="booking.html" class="menu-item" style="color: #fff; font-weight: 500;">BOOKING</a></li>
+        </ul>
+
+        <div class="menu-footer">
+            <a href="https://instagram.com" target="_blank" class="nav-icon" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero-booking">
+            <div class="hero-booking-content">
+                <h1>Book Your Photography Session</h1>
+                <p>Professional photography services tailored to your vision.<br>Available for editorial, commercial, portrait, wedding and event photography worldwide.</p>
+                <a href="#booking-form" class="btn btn-primary">Book Now</a>
+            </div>
+            <div class="scroll-indicator">↓</div>
+        </section>
+
+        <!-- INTRODUCTION -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Professional Photography Services</h2>
+            </div>
+            <p class="intro-text">
+                Whether you're looking for a personal portrait, editorial campaign, beauty shoot or event coverage, every session is designed to create timeless images with exceptional attention to detail.
+            </p>
+        </section>
+
+        <!-- PRICING -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Photography Packages</h2>
+                <p>Transparent pricing for premium photography services.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Card 1 -->
+                <article class="pricing-card">
+                    <h3>Portraits & Headshots</h3>
+                    <p class="desc">Ideal for professionals, creatives, personal branding and social media.</p>
+                    <ul class="pricing-list">
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> 1-hour session</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> 10 professionally retouched photographs</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Online private gallery</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> High-resolution downloads</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Commercial use available</li>
+                    </ul>
+                    <div class="pricing-price">
+                        <span>Starting at</span>
+                        <strong>$300</strong>
+                    </div>
+                    <a href="#booking-form" class="btn">Book Portrait Session</a>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="pricing-card">
+                    <h3>Editorial & Beauty</h3>
+                    <p class="desc">Perfect for magazines, agencies, brands and beauty campaigns.</p>
+                    <ul class="pricing-list">
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Half-day studio session</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Professional lighting</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> High-end beauty retouching</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Editorial quality images</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Commercial licensing</li>
+                    </ul>
+                    <div class="pricing-price">
+                        <span>Starting at</span>
+                        <strong>$800</strong>
+                    </div>
+                    <a href="#booking-form" class="btn">Book Editorial Session</a>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="pricing-card">
+                    <h3>Event Photography</h3>
+                    <p class="desc">Wedding photography, corporate events, private celebrations, and luxury events.</p>
+                    <ul class="pricing-list">
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Customized coverage</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Online gallery</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Fast delivery</li>
+                        <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Tailored photography timeline</li>
+                    </ul>
+                    <div class="pricing-price">
+                        <span>Price</span>
+                        <strong style="font-size: 28px;">Custom Quote</strong>
+                    </div>
+                    <a href="#booking-form" class="btn">Request a Quote</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- WHY BOOK WITH ME -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Why Clients Choose My Photography</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <h3>Professional Editing</h3>
+                </div>
+                <div class="why-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <h3>Personalized Experience</h3>
+                </div>
+                <div class="why-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <h3>Fast Delivery</h3>
+                </div>
+                <div class="why-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <h3>Worldwide Availability</h3>
+                </div>
+                <div class="why-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <h3>Luxury Image Quality</h3>
+                </div>
+                <div class="why-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <h3>Editorial Style</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING FORM -->
+        <section class="section" id="booking-form">
+            <div class="section-header">
+                <h2>Request a Photography Session</h2>
+                <p>Complete the form below and I'll get back to you within 24–48 hours with availability and a personalized proposal.</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your request! We will get back to you soon.');">
+                    <!-- Personal Info -->
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" required placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-control" required placeholder="jane@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="+1 234 567 8900">
+                    </div>
+
+                    <!-- Project Info -->
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">How did you hear about my work?</label>
+                            <select class="form-control">
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="google">Google Search</option>
+                                <option value="referral">Referral</option>
+                                <option value="magazine">Magazine</option>
+                                <option value="friend">Friend</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">What type of photoshoot?</label>
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="portrait">Portrait</option>
+                                <option value="beauty">Beauty</option>
+                                <option value="editorial">Editorial</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="campaign">Campaign</option>
+                                <option value="jewelry">Jewelry</option>
+                                <option value="travel">Travel</option>
+                                <option value="landscape">Landscape</option>
+                                <option value="nature">Nature</option>
+                                <option value="corporate">Corporate</option>
+                                <option value="event">Event</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Which package are you interested in?</label>
+                            <select class="form-control">
+                                <option value="" disabled selected>Select a package</option>
+                                <option value="portrait">Portrait Package</option>
+                                <option value="editorial">Editorial Package</option>
+                                <option value="beauty">Beauty Session</option>
+                                <option value="wedding">Wedding Coverage</option>
+                                <option value="custom">Custom Project</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Estimated Budget</label>
+                            <select class="form-control">
+                                <option value="" disabled selected>Select your budget</option>
+                                <option value="under500">Under $500</option>
+                                <option value="500-1000">$500–1000</option>
+                                <option value="1000-3000">$1000–3000</option>
+                                <option value="3000+">$3000+</option>
+                                <option value="unsure">Not sure yet</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Location (City/Country)</label>
+                            <input type="text" class="form-control" placeholder="Milan, Italy">
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label class="form-label">Date of the photoshoot/event</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Venue Address</label>
+                        <textarea class="form-control" style="min-height: 50px;" placeholder="Full address if known..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">What do you like most about my photography style?</label>
+                        <textarea class="form-control" required placeholder="Tell me about your project, inspiration, mood, references or any special requests."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Upload Inspiration Images (Optional)</label>
+                        <div class="file-upload">
+                            <input type="file" multiple accept="image/*">
+                            <p>Drag & Drop files here or click to browse</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Preferred Contact Method</label>
+                        <div class="radio-options">
+                            <label><input type="radio" name="contact_method" value="email" checked> Email</label>
+                            <label><input type="radio" name="contact_method" value="phone"> Phone</label>
+                            <label><input type="radio" name="contact_method" value="whatsapp"> WhatsApp</label>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">I agree to the Privacy Policy and consent to being contacted regarding my inquiry.</label>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Request Booking</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">How far in advance should I book?</button>
+                    <div class="faq-answer">
+                        <p>I recommend booking several weeks in advance to ensure availability, especially for weddings or large campaigns.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do you travel internationally?</button>
+                    <div class="faq-answer">
+                        <p>Yes, I am available worldwide for editorial, commercial and private photography assignments. Travel fees may apply depending on the location.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How long does photo delivery take?</button>
+                    <div class="faq-answer">
+                        <p>Delivery times vary depending on the project, typically between 1–3 weeks. Expedited delivery is available upon request.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Can I request additional retouching?</button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Additional high-end beauty retouching services are available upon request for an extra fee per image.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Let's Create Something Extraordinary</h2>
+                <p>Whether you're planning a portrait session, editorial campaign or destination wedding, I'd love to hear about your vision.</p>
+                <a href="#booking-form" class="btn btn-primary">Contact Me</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>&copy; 2026 CAMARA VISUAL. ALL RIGHTS RESERVED.</div>
+        <div class="footer-links">
+            <a href="mailto:hello@camaravisual.com">Email</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">Terms</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Menu Overlay Logic
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        function toggleMenu() {
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Category Dropdown Toggle
+        const categoryToggle = document.getElementById('category-toggle');
+        const categoryDropdown = document.getElementById('category-dropdown');
+
+        categoryToggle.addEventListener('click', () => {
+            categoryDropdown.classList.toggle('active');
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                faqItems.forEach(faq => faq.classList.remove('active'));
+                
+                // If it wasn't active before, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll for local anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
